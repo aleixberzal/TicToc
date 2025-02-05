@@ -17,7 +17,7 @@ int main() {
                     tablero[i][j] = ' ';
                 }
 
-            }
+            } //Testing
             else {
                 tablero[i][j] = '-';
             }
