@@ -4,9 +4,9 @@
 #define xLength 7
 #define yLength 13
 
-void gamePlay(char updateTablero[xLength][yLength], int& row, int& column, int& rowUP, int& columnUP) {
+void gamePlay(char updateTablero[xLength][yLength], int& row, int& column, int& rowUP, int& columnUP, bool& turno1) {
 
-    firstRow(updateTablero, row, column, rowUP, columnUP);
+    firstRow(updateTablero, row, column, rowUP, columnUP, turno1);
     secondRow(updateTablero, row, column, rowUP, columnUP);
     thirdRow(updateTablero, row, column, rowUP, columnUP);
 }
@@ -38,7 +38,7 @@ void createTable(char tablero[xLength][yLength]) {
     }
 }
 
-void updateTable(char updateTablero[xLength][yLength], int row, int column, int rowUP, int columnUP) {
+void updateTable(char updateTablero[xLength][yLength], int row, int column, int rowUP, int columnUP, bool turno1) {
     // Copiamos el tablero original a updateTablero
     for (int i = 0; i < xLength; i++) {
         for (int j = 0; j < yLength; j++) {
@@ -46,7 +46,7 @@ void updateTable(char updateTablero[xLength][yLength], int row, int column, int 
         }
     }
     
-    gamePlay(updateTablero, row, column, rowUP, columnUP);
+    gamePlay(updateTablero, row, column, rowUP, columnUP, turno1);
   
     // Imprimimos el tablero actualizado.
     for (int i = 0; i < xLength; i++) {
@@ -69,10 +69,10 @@ int main() {
     createTable(tablero);
 
     if (turno1) {
-        std::cout << "Choose a row (must be 1): " << std::endl;
+        std::cout << "Choose a row: " << std::endl;
         std::cin >> row;
 
-        std::cout << "Choose a column (must be 1): " << std::endl;
+        std::cout << "Choose a column: " << std::endl;
         std::cin >> column;
 
      
@@ -85,11 +85,38 @@ int main() {
 
             // Actualizamos el tablero con la nueva posición
 
-            updateTable(updateTablero, row, column, rowUP, columnUP);
+            updateTable(updateTablero, row, column, rowUP, columnUP, turno1);
         
-       
+            // DETERMINAR LA PRIMERA FILA
+            if (row < 1 || row > 3 || column < 1 || column > 3) {
 
-        turno1 = false;
+                std::cout << "Posicion no valida, vuelve a tirar" << std::endl;
+
+                turno1 = true;
+
+                std::cout << "Choose a row: " << std::endl;
+                std::cin >> row;
+
+                std::cout << "Choose a column: " << std::endl;
+                std::cin >> column;
+
+
+                // Copiamos el tablero original a la versión de actualización
+                for (int i = 0; i < xLength; i++) {
+                    for (int j = 0; j < yLength; j++) {
+                        updateTablero[i][j] = tablero[i][j];
+                    }
+                }
+
+                // Actualizamos el tablero con la nueva posición
+
+                updateTable(updateTablero, row, column, rowUP, columnUP, turno1);
+
+            }
+            else {
+                turno1 = false;
+            }
+
     }
 
     return 0;
