@@ -70,18 +70,52 @@ void updateTable(char tablero[xLength][yLength], int row, int column, bool turno
     printTable(tablero);
 
 }
+void victoryLogic(char tablero[xLength][yLength], int row, int column, bool turno1, bool gameOver) {
+    
+    
+    /*Chequeamos si alguna row es del mismo símbolo*/
+    for (int i = 0; i <= 2; i++) {
 
+        if(tablero[i][0] == tablero[i][1] && tablero[i][1] == tablero[i][2] && tablero[i][0] != 0) {
+
+            if (turno1) {
+                std::cout << "El ganador es el jugador IA" << std::endl;
+                gameOver = true;
+            }
+            else {
+                std::cout << "El ganador es el jugador humano" << std::endl;
+                gameOver = true;
+            }
+        }
+    }
+    /*Chequeamos si alguna fila es el mismo símbolo*/
+    for (int i = 0; i <= 2; i++) {
+
+        if (tablero[0][i] == tablero[1][i] && tablero[1][i] == tablero[2][i] && tablero[0][i] != 0) {
+           
+            if (turno1) {
+                std::cout << "El ganador es el jugador IA" << std::endl;
+                gameOver = true;
+            }
+            else {
+                std::cout << "El ganador es el jugador humano" << std::endl;
+                gameOver = true;
+            }
+        }
+    }
+}
 int main() {
 
     srand(time(0));
     int row, column;
     char tablero[xLength][yLength];
     bool turno1 = true;
+    bool gameOver = false;
 
     createTable(tablero);
     printTable(tablero);
 
-    while (true) { 
+    while (!gameOver) { 
 
         /*Si es el turno 1 saldrá el primer título, en caso de que no lo sea, saldrá el de después del doble punto*/
 
@@ -98,6 +132,7 @@ int main() {
             std::cout << "I choose the column: " << column << std::endl;
 
             updateTable(tablero, row, column, turno1);
+            victoryLogic(tablero, row, column, turno1, gameOver);
             turno1 = !turno1;
         }
         else {
