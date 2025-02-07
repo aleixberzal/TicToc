@@ -129,9 +129,13 @@
   <ItemGroup>
     <ClCompile Include="gameplay.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="table.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameplay.h" />
+    <ClInclude Include="table.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
