@@ -99,6 +99,7 @@ bool victoryLogic(char tablero[xLength][yLength]) {
 
     }
 }
+
 void newGame(char tablero[xLength][yLength], int& row, int& column, bool& turno1, bool& victory) {
     createTable(tablero);
     printTable(tablero);
