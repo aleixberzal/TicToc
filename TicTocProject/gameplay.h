@@ -7,4 +7,4 @@ void gamePlay(char tablero[xLength][yLength], int& row, int& column, bool& turno
 void newGame(char tablero[xLength][yLength], int& row, int& column, bool& turno1, bool& victory);
 void loadGame(char tablero[xLength][yLength], int& row, int& column, bool& turno1, bool& gameOver);
 void exitGame();
-void victoryLogic(char tablero[xLength][yLength]);
+bool victoryLogic();

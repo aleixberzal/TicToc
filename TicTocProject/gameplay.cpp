@@ -35,8 +35,9 @@ void gamePlay(char tablero[xLength][yLength], int& row, int& column, bool& turno
 
     }
 }
-bool victoryLogic(char tablero[xLength][yLength]) {
+bool victoryLogic() {
 
+    char tablero[xLength][yLength];
     bool victory = true;
 
     while (victory) {
@@ -122,7 +123,7 @@ void newGame(char tablero[xLength][yLength], int& row, int& column, bool& turno1
 
 
             updateTable(tablero, row, column, turno1, victory);
-            if (victoryLogic(tablero)) {
+            if (victoryLogic()) {
 
                 victory = false;
                 mainMenu(tablero, row, column, turno1, victory);
@@ -150,7 +151,7 @@ void newGame(char tablero[xLength][yLength], int& row, int& column, bool& turno1
 
             updateTable(tablero, row, column, turno1, victory);
 
-            if (victoryLogic(tablero)) {
+            if (victoryLogic()) {
 
                 victory = false;
 

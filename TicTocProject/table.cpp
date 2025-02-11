@@ -15,7 +15,7 @@ void printTable(char tablero[xLength][yLength]) {
 void updateTable(char tablero[xLength][yLength], int& row, int& column, bool& turno1, bool& victory) {
 
     gamePlay(tablero, row, column, turno1);
-    victoryLogic(tablero);
+    victoryLogic();
     printTable(tablero);
 
 }

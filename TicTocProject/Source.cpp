@@ -1,5 +1,7 @@
 #include <iostream>
 #include "gameplay.h"
+#include "UI.h"
+#include "table.h"
 #include <cstdlib>
 #include "UI.h"
 #define xLength 7
@@ -11,7 +13,7 @@
 
 
 
-int main() {
+void main() {
 
     srand(time(0));
     int row = 0;
